@@ -212,7 +212,7 @@ def extrairInfoPessoas(self, caminho_arquivo_pessoas_queue, caminho_arquivo_pess
 
     if df_pessoas.empty:
         # Enviar email de notificação indicando que a fila de execução está vazia !!!!!!!!
-        raise Exception('A fila de execução está vazia')
+        raise Exception('A fila de execução de extração de pessoas está vazia')
 
     for index, row in df_pessoas.iterrows():
         try:
@@ -350,11 +350,17 @@ def prepararArquivo(caminho_arquivo_pessoas,caminho_arquivo_pessoas_queue):
         wb.save(file)
 
 def integrarBase(caminho_arquivo_empresas, caminho_arquivo_pessoas, caminho_arquivo_base):
-    df_pessoas = pd.read_excel(caminho_arquivo_pessoas)
-    df_empresas = pd.read_excel(caminho_arquivo_empresas, sheet_name="Base de dados")
-    df_join = pd.merge(df_pessoas, df_empresas, on='linkedinEmpresa', how='inner')
-    base_path = caminho_arquivo_base + "baseLinkedin-" + datetime.now().strftime("%m-%d-%Y%H-%M-%S") + ".xlsx"
-    df_join.to_excel(base_path, index=False) 
+    try:
+        df_pessoas = pd.read_excel(caminho_arquivo_pessoas)
+        df_empresas = pd.read_excel(caminho_arquivo_empresas, sheet_name="Base de dados")
+        df_join = pd.merge(df_pessoas, df_empresas, on='linkedinEmpresa', how='inner')
+        base_path = caminho_arquivo_base + "baseLinkedin-" + datetime.now().strftime("%m-%d-%Y%H-%M-%S") + ".xlsx"
+        df_join.to_excel(base_path, index=False) 
+        print("Base criado com sucesso.")
+    except Exception as e:
+        #Enviar email
+        print(e)
+        print("Erro na etapa de integração das bases. Por favor verificar com o suporte")
         
 def finalizar_contagem_tempo(inicio):
     fim = time.time()
