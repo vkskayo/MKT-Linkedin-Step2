@@ -26,13 +26,11 @@ from dotenv import load_dotenv
 import os #provides ways to access the Operating System and allows us to read the environment variables
 import openpyxl
 from datetime import datetime
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
 import smtplib
 # Import the email modules we'll need
 import email.message
-from email.message import EmailMessage
+
 
 
 
