@@ -1,5 +1,8 @@
 botcity-framework-web>=0.7.0,<1.0
 botcity-maestro-sdk>=0.2.0,<1.0
+openpyxl
+python-dotenv
+pandas
 # Uncomment to use botcity-utils
 #botcity-utils>=0.1.2
 # Uncomment to use botcity-crawler-plugin
