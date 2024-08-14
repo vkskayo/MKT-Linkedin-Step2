@@ -72,6 +72,7 @@ class Bot(WebBot):
         
         prepararArquivo(caminho_arquivo_pessoas,caminho_arquivo_pessoas_queue)
         login(self, email, password)
+        self.wait(45000)
         extrairLinkPessoas(self, caminho_arquivo_empresas, caminho_arquivo_pessoas_queue, caminho_arquivo_relatorio_sucesso)
         extrairInfoPessoas(self, caminho_arquivo_pessoas_queue, caminho_arquivo_pessoas, caminho_arquivo_relatorio_sucesso)
         logout(self)
