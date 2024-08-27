@@ -111,9 +111,9 @@ def login(self, credential_email, credential_password):
         print("Não encontrado elemento de login, iniciando fluxo alternativo de login")
         botaoEntrar = self.find_element(selector="/html/body/main/section[1]/div/div/a", by = By.XPATH)
         botaoEntrar.click()
-        alternativeEmail = self.find_element(selector="/html/body/div/main/div[2]/div[1]/form/div[1]/input", by = By.XPATH) 
-        alternativePassword = self.find_element(selector="/html/body/div/main/div[2]/div[1]/form/div[2]/input", by = By.XPATH)
-        alternativeLoginButton = self.find_element(selector="/html/body/div/main/div[2]/div[1]/form/div[3]/button", by = By.XPATH) 
+        alternativeEmail = self.find_element(selector='//*[@id="username"]', by = By.XPATH) 
+        alternativePassword = self.find_element(selector='//*[@id="password"]', by = By.XPATH)
+        alternativeLoginButton = self.find_element(selector='//*[@id="organic-div"]/form/div[3]/button', by = By.XPATH) 
 
         alternativeEmail.send_keys(credential_email)
         alternativePassword.send_keys(credential_password) 
