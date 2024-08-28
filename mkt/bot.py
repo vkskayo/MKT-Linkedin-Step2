@@ -254,11 +254,24 @@ def extrairInfoPessoas(self, caminho_arquivo_pessoas_queue, caminho_arquivo_pess
             experienciaElement = self.find_element(selector="//*[@id='profile-content']/div/div[2]/div/div/main/section[5]", by = By.XPATH)
             experienciaElement2 = self.find_element(selector="//*[@id='profile-content']/div/div[2]/div/div/main/section[6]", by = By.XPATH)
             experienciaElement3 = self.find_element(selector="//*[@id='profile-content']/div/div[2]/div/div/main/section[4]", by = By.XPATH)
-            experienciaElement4 = self.find_element(selector="//*[@id='profile-content']/div/div[2]/div/div/main/section[3]", by = By.XPATH)   
-            experienciaList = experienciaElement.text.split("\n")
-            experienciaList2 = experienciaElement2.text.split("\n")
-            experienciaList3 = experienciaElement3.text.split("\n")
-            experienciaList4 = experienciaElement4.text.split("\n")
+            experienciaElement4 = self.find_element(selector="//*[@id='profile-content']/div/div[2]/div/div/main/section[3]", by = By.XPATH)
+
+            experienciaList = ['None']
+            experienciaList2 = ['None']
+            experienciaList3 = ['None']
+            experienciaList4 = ['None']
+
+            if experienciaElement:
+                experienciaList = experienciaElement.text.split("\n")
+            
+            if experienciaElement2:
+                experienciaList2 = experienciaElement2.text.split("\n")
+
+            if experienciaElement3:
+                experienciaList3 = experienciaElement3.text.split("\n")
+            
+            if experienciaElement4:
+                experienciaList4 = experienciaElement4.text.split("\n")
 
             if experienciaList[0] == "Experiência":
                 cargo_experiencia = experienciaList[2]
