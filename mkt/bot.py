@@ -46,7 +46,7 @@ class Bot(WebBot):
         #     self.maestro.RAISE_NOT_CONNECTED = False
 
         # Configure whether or not to run on headless mode
-        self.headless = True
+        self.headless = False
    
         # Uncomment to change the default Browser to Firefox
         # self.browser = Browser.FIREFOX
