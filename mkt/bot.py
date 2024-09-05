@@ -45,8 +45,7 @@ class Bot(WebBot):
         # if self.maestro:
         #     self.maestro.RAISE_NOT_CONNECTED = False
 
-        # Configure whether or not to run on headless mode
-        self.headless = False
+   
    
         # Uncomment to change the default Browser to Firefox
         # self.browser = Browser.FIREFOX
@@ -61,8 +60,11 @@ class Bot(WebBot):
         caminho_arquivo_empresas = os.getenv("CAMINHO_ARQUIVO_EMPRESAS")
         caminho_arquivo_relatorio_sucesso = os.getenv("CAMINHO_ARQUIVO_RELATORIO_SUCESSO")
         caminho_arquivo_base = os.getenv("CAMINHO_ARQUIVO_BASE")
+        background = os.getenv("BACKGROUND")
 
         self.driver_path = caminho_chrome_driver
+        # Configure whether or not to run on headless mode
+        self.headless = background.upper() == 'TRUE'
 
         # Fetch the Activity ID from the task:
         # task = self.maestro.get_task(execution.task_id)
